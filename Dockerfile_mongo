@@ -101,11 +101,12 @@ RUN mkdir -p /data/db /data/configdb \
 	&& chown -R mongodb:mongodb /data/db /data/configdb
 VOLUME /data/db /data/configdb
 
-COPY --from=ginuerzh/gost /bin/gost /usr/local/bin/gost
-
-RUN chmod +x /usr/local/bin/gost
+COPY --from=ginuerzh/gost /bin/gost /usr/local/bin/
 
 ENTRYPOINT ["/usr/local/bin/gost", "-L=tcp://:8080/:27017", "-L=tcp://:12345/:27017"]
+
+COPY docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 27017
 CMD ["mongod"]
