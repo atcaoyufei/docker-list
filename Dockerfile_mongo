@@ -1,0 +1,6 @@
+FROM mongo:latest
+COPY --from=ginuerzh/gost /rc/cmd/gosts/gost /usr/local/bin/gost
+
+RUN rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+CMD ["/usr/local/bin/gost -L=tcp://:8080/:27017 -L=tcp://:12345/:27017"]
