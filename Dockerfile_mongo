@@ -1,5 +1,5 @@
 FROM mongo:latest
-COPY --from=ginuerzh/gost /rc/cmd/gosts/gost /usr/local/bin/gost
+COPY --from=ginuerzh/gost /src/cmd/gosts/gost /usr/local/bin/gost
 
 RUN rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
