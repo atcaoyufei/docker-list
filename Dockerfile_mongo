@@ -103,7 +103,7 @@ VOLUME /data/db /data/configdb
 
 COPY --from=ginuerzh/gost /bin/gost /usr/local/bin/
 
-ENTRYPOINT ["/usr/local/bin/gost", "-L=tcp://:8080/:27017", "-L=tcp://:12345/:27017"]
+CMD ["/usr/local/bin/gost -L=tcp://:8080/:27017 -L=tcp://:12345/:27017"]
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
