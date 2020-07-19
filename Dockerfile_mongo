@@ -104,4 +104,5 @@ VOLUME /data/db /data/configdb
 COPY --from=ginuerzh/gost /bin/gost /usr/local/bin/
 
 EXPOSE 27017
+
 CMD ["mongod"]
