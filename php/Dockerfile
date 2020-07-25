@@ -3,7 +3,7 @@ FROM caoyufei/debian
 ENV  PHP_VERSION=php-7.2.31 PHPRedis_Ver=redis-5.2.2
 ADD conf /tmp/conf
 
-ENV PHPIZE_DEPS autoconf dpkg-dev g++ gcc libc-dev make pkg-config re2c
+ENV PHPIZE_DEPS autoconf dpkg-dev file g++ gcc libc-dev make pkg-config re2c
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends $PHPIZE_DEPS wget curl ca-certificates libxml2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev openssl libssl-dev \
