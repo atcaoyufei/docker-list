@@ -60,7 +60,6 @@ RUN apt-get update -y \
     && make \
     && make install \
     && cp /tmp/conf/007-redis.ini /usr/local/php/conf.d/007-redis.ini \
-    && cp /tmp/conf/configure /usr/local/bin && chmo \
     && install -m 755 /tmp/conf/fpm-configure /usr/local/bin/fpm-configure \
     && wget --prefer-family=IPv4 --no-check-certificate -T 120 -t3 http://soft.vpser.net/web/php/composer/composer.phar -O /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer \
