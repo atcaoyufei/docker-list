@@ -1,8 +1,8 @@
-FROM python:3.6-alpine
+FROM python:3.6-stretch
 
 RUN rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && mkdir -p /data/python
-RUN pip install --upgrade pip && pip install pyppeteer requests cloudant pyquery
+RUN pip install --upgrade pip && pip install pyppeteer requests cloudant pyquery psycopg2 python-dotenv
 
 WORKDIR /data/python
 

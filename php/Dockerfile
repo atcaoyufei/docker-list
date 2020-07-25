@@ -1,6 +1,6 @@
 FROM caoyufei/debian
 
-ENV  hp_Ver=php-7.2.31 PHPRedis_Ver=redis-5.2.2
+ENV  PHP_VERSION=php-7.2.31 PHPRedis_Ver=redis-5.2.2
 ADD conf /tmp/conf
 
 RUN apt-get update -y \
@@ -17,9 +17,9 @@ RUN apt-get update -y \
     && groupadd www \
     && useradd -s /sbin/nologin -g www www \
     && cd /tmp \
-    && wget -c --progress=bar:force --prefer-family=IPv4 --no-check-certificate http://soft.vpser.net/web/php/${Php_Ver}.tar.bz2 \
-    && tar xjf ${Php_Ver}.tar.bz2 \
-    && cd /tmp/${Php_Ver} \
+    && wget -c --progress=bar:force --prefer-family=IPv4 --no-check-certificate http://soft.vpser.net/web/php/${PHP_VERSION}.tar.bz2 \
+    && tar xjf ${PHP_VERSION}.tar.bz2 \
+    && cd /tmp/${PHP_VERSION} \
     && ./configure $CONFIG \
     && make -j$(getconf _NPROCESSORS_ONLN) \
     && make install \
@@ -30,7 +30,9 @@ RUN apt-get update -y \
     && ln -sf /usr/local/php/sbin/php-fpm /usr/bin/php-fpm \
     && cp php.ini-production /usr/local/php/etc/php.ini \
     && mkdir -p /usr/local/php/conf.d \
+    && mkdir -p /data/wwwroot/ \
     && mkdir -p /data/wwwlogs \
+    && chown -R www:www /data/wwwroot \
     && sed -i 's/post_max_size =.*/post_max_size = 50M/g' /usr/local/php/etc/php.ini \
     && sed -i 's/upload_max_filesize =.*/upload_max_filesize = 50M/g' /usr/local/php/etc/php.ini \
     && sed -i 's/;date.timezone =.*/date.timezone = PRC/g' /usr/local/php/etc/php.ini \
