@@ -1,9 +1,0 @@
-FROM mongo:latest
-
-COPY --from=ginuerzh/gost /bin/gost /usr/local/bin/
-
-EXPOSE 27017
-
-# CMD nohup sh -c 'mongod && /usr/local/bin/gost -L=tcp://:8080/:27017 -L=tcp://:12345/:27017'
-
-CMD ["mongod"]
