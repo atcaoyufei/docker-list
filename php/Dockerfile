@@ -82,7 +82,7 @@ RUN apt-get update -y \
     && wget --prefer-family=IPv4 --no-check-certificate -T 120 -t3 http://soft.vpser.net/web/php/composer/composer.phar -O /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer \
     && composer global require "fxp/composer-asset-plugin" \
-apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
