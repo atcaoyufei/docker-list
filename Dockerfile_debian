@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:stretch
 
 ENV TIME_ZONE=Asia/Shanghai
 
