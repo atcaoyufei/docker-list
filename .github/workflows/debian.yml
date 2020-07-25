@@ -3,7 +3,9 @@ name: debian
 on:
   push:
     branches: [ master ]
-
+    paths:
+      - 'debian.yml'
+      -
 jobs:
   build:
     name: Push Docker image to Docker Hub
