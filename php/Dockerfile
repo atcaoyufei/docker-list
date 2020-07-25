@@ -6,7 +6,7 @@ ADD conf /tmp/conf
 #ENV PHPIZE_DEPS autoconf dpkg-dev file g++ gcc libc-dev make pkg-config re2c
 
 RUN apt-get update -y \
-    && apt-get --no-install-recommends install -y build-essential gcc g++ make autoconf wget libxml2-dev libcurl4-gnutls-dev bison curl ca-certificates re2c libjpeg-dev libpng-dev libfreetype6-dev openssl libssl-dev \
+    && apt-get --no-install-recommends install -y build-essential gcc g++ make autoconf wget libxml2-dev libcurl4-gnutls-dev bison curl ca-certificates re2c libjpeg-dev libpng-dev libfreetype6-dev openssl libssl-dev libcurl4-openssl-dev libcurl4-openssl-dev pkg-config \
     && CONFIG="\
     --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-config-file-scan-dir=/usr/local/php/conf.d \
     --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd \
