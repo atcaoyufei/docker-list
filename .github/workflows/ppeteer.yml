@@ -3,6 +3,8 @@ name: ppeteer
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'ppeteer.yml'
 
 jobs:
   build:

@@ -34,7 +34,7 @@ RUN apt-get update -y \
     && make install \
     && strip /usr/local/nginx/sbin/nginx* \
     && ln -sf /usr/local/nginx/sbin/nginx /usr/bin/nginx \
-    && mkdir /data/nginx/vhost/ \
+    && mkdir -p /data/nginx/vhost/ \
     && mkdir -p /data/wwwroot/default/ \
     && mkdir -p /data/wwwlogs \
     && chown -R www:www /data/wwwroot \

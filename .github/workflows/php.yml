@@ -3,6 +3,8 @@ name: php
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'php.yml'
 
 jobs:
   build:
