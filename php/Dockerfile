@@ -46,7 +46,6 @@ RUN apt-get update -y \
     && pecl config-set php_ini /usr/local/php/etc/php.ini \
     && pecl update-channels \
     && cp /tmp/conf/php-fpm.conf /usr/local/php/etc/php-fpm.conf \
-    && chmod +x /tmp/conf/php-configure && ./tmp/conf/php-configure \
     && rm ~/.pearrc \
     && rm -f /usr/local/php/conf.d/* \
     && cp /tmp/conf/004-opcache.ini /usr/local/php/conf.d/004-opcache.ini \
@@ -61,6 +60,8 @@ RUN apt-get update -y \
     && make \
     && make install \
     && cp /tmp/conf/007-redis.ini /usr/local/php/conf.d/007-redis.ini \
+    && cp /tmp/conf/configure /usr/local/bin && chmo \
+    && install -m 755 /tmp/conf/fpm-configure /usr/local/bin/fpm-configure \
     && wget --prefer-family=IPv4 --no-check-certificate -T 120 -t3 http://soft.vpser.net/web/php/composer/composer.phar -O /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer \
     && composer global require 'fxp/composer-asset-plugin' \
