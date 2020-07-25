@@ -3,19 +3,10 @@ FROM caoyufei/debian
 ENV  PHP_VERSION=php-7.2.31 PHPRedis_Ver=redis-5.2.2
 ADD conf /tmp/conf
 
-ENV PHPIZE_DEPS \
-		autoconf \
-		dpkg-dev \
-		file \
-		g++ \
-		gcc \
-		libc-dev \
-		make \
-		pkg-config \
-		re2c
+ENV PHPIZE_DEPS autoconf dpkg-dev g++ gcc libc-dev make pkg-config re2c
 
 RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends $PHPIZE_DEPS wget curl ca-certificates libargon2-dev libcurl4-openssl-dev libedit-dev libsodium-dev libsqlite3-dev libssl-dev libxml2-dev zlib1g-dev \
+    && apt-get install -y --no-install-recommends $PHPIZE_DEPS wget curl ca-certificates libxml2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev openssl libssl-dev \
     && CONFIG="\
     --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-config-file-scan-dir=/usr/local/php/conf.d \
     --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd \
@@ -72,8 +63,8 @@ RUN apt-get update -y \
     && cp /tmp/conf/007-redis.ini /usr/local/php/conf.d/007-redis.ini \
     && wget --prefer-family=IPv4 --no-check-certificate -T 120 -t3 http://soft.vpser.net/web/php/composer/composer.phar -O /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer \
-    && composer global require "fxp/composer-asset-plugin" \
-    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+    && composer global require 'fxp/composer-asset-plugin' \
+    && apt-get purge binutils binutils-common binutils-x86-64-linux-gnu gir1.2-glib-2.0 gir1.2-harfbuzz-0.0 build-essential gcc g++ make wget autoconf python3* cpp cpp-7 g++-7 gcc-7 gcc-7-base -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
