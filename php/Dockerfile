@@ -15,7 +15,7 @@ ENV PHPIZE_DEPS \
 		re2c
 
 RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends $PHPIZE_DEPS wget curl ca-certificates libargon2-dev libcurl4-openssl-dev libedit-dev libsodium-dev libsqlite3-dev libssl-dev libxml2-dev zlib1g-dev
+    && apt-get install -y --no-install-recommends $PHPIZE_DEPS wget curl ca-certificates libargon2-dev libcurl4-openssl-dev libedit-dev libsodium-dev libsqlite3-dev libssl-dev libxml2-dev zlib1g-dev \
     && CONFIG="\
     --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-config-file-scan-dir=/usr/local/php/conf.d \
     --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd \
