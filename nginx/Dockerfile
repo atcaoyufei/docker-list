@@ -51,6 +51,7 @@ RUN apt-get update -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+
 WORKDIR /data/wwwroot
 EXPOSE 80 443
 
