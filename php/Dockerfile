@@ -22,8 +22,11 @@ RUN apt-get update -y \
     && tar xjf ${PHP_VERSION}.tar.bz2 \
     && cd /tmp/${PHP_VERSION} \
     && ./configure $CONFIG \
-    && make -j$(getconf _NPROCESSORS_ONLN) \
+    && make -j "$(nproc)" \
+    && find -type f -name '*.a' -delete; \
     && make install \
+    && find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; \
+	&& make clean; \
     && ln -sf /usr/local/php/bin/php /usr/bin/php \
     && ln -sf /usr/local/php/bin/phpize /usr/bin/phpize \
     && ln -sf /usr/local/php/bin/pear /usr/bin/pear \
