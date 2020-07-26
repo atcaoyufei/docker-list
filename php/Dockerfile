@@ -64,7 +64,7 @@ RUN apt-get update -y \
     && wget --prefer-family=IPv4 --no-check-certificate -T 120 -t3 http://soft.vpser.net/web/php/composer/composer.phar -O /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer \
     && composer global require 'fxp/composer-asset-plugin' \
-    && apt-get purge autoconf dpkg-dev file g++ gcc libc-dev make pkg-config re2c wget curl -y \
+    && apt-get purge --auto-remove binutils autoconf dpkg-dev g++ gcc libc-dev make pkg-config re2c wget curl -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
