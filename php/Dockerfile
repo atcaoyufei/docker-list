@@ -23,10 +23,10 @@ RUN apt-get update -y \
     && cd /tmp/${PHP_VERSION} \
     && ./configure $CONFIG \
     && make -j "$(nproc)" \
-    && find -type f -name '*.a' -delete; \
+    && find -type f -name '*.a' -delete \
     && make install \
-    && find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; \
-	&& make clean; \
+    && find /usr/local/php/bin /usr/local/php/sbin/ -type f -executable -exec strip --strip-all '{}' + || true \
+	&& make clean \
     && ln -sf /usr/local/php/bin/php /usr/bin/php \
     && ln -sf /usr/local/php/bin/phpize /usr/bin/phpize \
     && ln -sf /usr/local/php/bin/pear /usr/bin/pear \
