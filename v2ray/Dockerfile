@@ -9,8 +9,9 @@ RUN apt-get update -y \
     && unzip /tmp/v2ray/v2ray.zip -d /tmp/v2ray \
     && install -m 755 /tmp/v2ray/v2ray /usr/local/bin/v2ray \
     && install -m 755 /tmp/v2ray/v2ctl /usr/local/bin/v2ctl \
-    && apt purge --auto-remove wget unzip \
+    && apt-get purge --auto-remove wget unzip \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && v2ray -version
 
-CMD ["v2ray -config /etc/v2ray.json"]
+CMD ["/usr/local/bin/v2ray -config /etc/v2ray.json"]
