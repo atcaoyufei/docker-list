@@ -12,6 +12,7 @@ RUN apt-get update -y \
     && apt-get purge --auto-remove -y wget unzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && v2ray -version
+    && v2ray -version \
+    && cat /etc/v2ray.json
 
 CMD ["v2ray -config /etc/v2ray.json"]
