@@ -1,6 +1,6 @@
 FROM caoyufei/debian
 
-RUN apt --no-install-recommends install curl unzip -y \
+RUN apt-get --no-install-recommends install -y install curl unzip \
     && curl -L -H "Cache-Control: no-cache" -o /tmp/v2ray/v2ray.zip https://github.com/v2ray/v2ray-core/releases/download/v4.26.0/v2ray-linux-64.zip \
     && unzip /tmp/v2ray/v2ray.zip -d /tmp/v2ray \
     && install -m 755 /tmp/v2ray/v2ray /usr/local/bin/v2ray \
