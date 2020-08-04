@@ -16,4 +16,4 @@ RUN apt-get update -y \
 ADD config.json /etc/v2ray/config.json
 ENV PATH /usr/local/bin/v2ray:$PATH
 
-CMD ["v2ray", "-config=/etc/v2ray.json"]
+CMD ["v2ray", "-config=/etc/v2ray/config.json"]
