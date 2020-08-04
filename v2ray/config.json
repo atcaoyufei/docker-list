@@ -1,6 +1,6 @@
 {
     "log":{
-        "loglevel":"info"
+        "loglevel":"warning"
     },
     "inbounds": [
         {
@@ -16,7 +16,7 @@
                 "disableInsecureEncryption": true
             },
             "streamSettings": {
-                "network": "ws"
+                "network": "tcp"
             }
         }
     ],
